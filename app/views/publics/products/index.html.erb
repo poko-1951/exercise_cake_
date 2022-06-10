@@ -1,0 +1,5 @@
+<h2>商品一覧</h2>
+<% @products.each do |product| %>
+  商品名 <%= link_to product.product_name, publics_product_path(product) %>
+  ¥ <%= product.price %> <br>
+<% end %>

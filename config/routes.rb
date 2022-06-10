@@ -7,6 +7,11 @@ Rails.application.routes.draw do
     registrations: "publics/registrations",
     sessions: "publics/sessions"
   }
+
+  namespace :publics do
+    resources :products, only: [:index, :show]
+  end
+
   devise_for :admins, skip: [:registrations, :password], controllers: {
     sessions: "admins/sessions"
   }
