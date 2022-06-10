@@ -12,7 +12,7 @@
             <%#<li><%= link_to "カート", class:"btn btn-outline-primary"%></li>
             <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"btn btn-outline-primary" %></li>
           <% elsif admin_signed_in? %>
-            <%#<li><%= link_to "商品一覧", class:"btn btn-primary" %></li>
+            <li><%= link_to "商品一覧", admins_products_path, class:"btn btn-primary" %></li>
             <%#<li><%= link_to "会員一覧", class:"btn btn-primary" %></li>
             <%#<li><%= link_to "注文履歴一覧", class:"btn btn-primary" %></li>
             <%#<li><%= link_to "ジャンル一覧", class:"btn btn-primary" %></li>
