@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   namespace :publics do
     resources :products, only: [:index, :show]
     resources :cart_products, only: [:create, :index]
+    resources :addresses, only: [:index, :create, :edit, :update, :destroy]
   end
 
   devise_for :admins, skip: [:registrations, :password], controllers: {
