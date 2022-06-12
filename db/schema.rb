@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_11_023906) do
+ActiveRecord::Schema.define(version: 2022_06_12_135351) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id"
@@ -66,6 +66,32 @@ ActiveRecord::Schema.define(version: 2022_06_11_023906) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "order_details", force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.integer "product_id", null: false
+    t.integer "product_count"
+    t.integer "price"
+    t.integer "productio_status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_order_details_on_order_id"
+    t.index ["product_id"], name: "index_order_details_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "total_price"
+    t.string "post_code"
+    t.string "address"
+    t.string "address_name"
+    t.integer "postage"
+    t.integer "payment_method"
+    t.integer "order_status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "product_name", null: false
     t.text "introduction", null: false
@@ -74,4 +100,7 @@ ActiveRecord::Schema.define(version: 2022_06_11_023906) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "order_details", "orders"
+  add_foreign_key "order_details", "products"
+  add_foreign_key "orders", "customers"
 end
