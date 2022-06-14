@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :cart_products, only: [:create, :index]
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :orders, only: [:new, :create, :index]
+    post "confirm" => "orders#confirm", as: "confirm"
+    get "complete" => "orders#complete", as: "complete"
   end
 
   devise_for :admins, skip: [:registrations, :password], controllers: {
